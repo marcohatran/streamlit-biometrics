@@ -6,6 +6,7 @@ import uuid
 from service.face_compare import main
 from service.face_index import face_encoding, face_index
 from service.face_search import face_search
+import time as T
 
 # Create a page dropdown
 title = st.title("Nhận diện sinh trắc học")
@@ -24,9 +25,11 @@ if page == "Face Compare":
         image_idcard_front_path = "data" + "/" + str(uuid.uuid1()) + ".jpg"
         image_idcard_front.save(image_idcard_front_path)
     if st.button('Face compare'):
+        start_time = T.time()
         distance, result = main(image_face_path, image_idcard_front_path)
         st.write("Kết quả:" + str(result))
         st.write("Tỷ lệ: " + str(1 - distance))
+        st.write("Thời gian xử lý: " +str(T.time()-start_time))
         os.remove(image_face_path)
         os.remove(image_idcard_front_path)
 elif page == "Face Index":
@@ -53,9 +56,11 @@ elif page == "Face Search":
         image_to_search_path = "data" + "/" + str(uuid.uuid1()) + ".jpg"
         image_to_search.save(image_to_search_path)
     if st.button("Search"):
+        start_time = T.time()
         face_vector = face_encoding(image_to_search_path)
         result_search = face_search(face_vector)
         st.write(result_search)
+        st.write("Thời gian xử lý: " + str(T.time()-start_time))
         os.remove(image_to_search_path)
 
 

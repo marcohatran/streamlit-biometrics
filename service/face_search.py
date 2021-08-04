@@ -2,12 +2,12 @@ from elasticsearch import Elasticsearch
 
 
 def face_search(face_vector):
-    index = "faces"
+    index = "faces_demo"
     es = Elasticsearch()
     response = es.search(
         index=str(index),
         body={
-            "size": 3,
+            "size": 1,
             # "_source": "cif",
             "query": {
                 "script_score": {

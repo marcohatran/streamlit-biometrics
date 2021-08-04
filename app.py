@@ -39,8 +39,8 @@ if page == "Face Compare":
         st.write("Kết quả:" + str(result))
         st.write("Tỷ lệ: " + str(1 - distance))
         st.write("Thời gian xử lý: " + str(T.time() - start_time))
-        os.remove(image_face_path)
-        os.remove(image_idcard_front_path)
+        # os.remove(image_face_path)
+        # os.remove(image_idcard_front_path)
 elif page == "Face Index":
     upload_face_index = st.file_uploader("Chọn ảnh khuôn mặt index ...")
     if upload_face_index is not None:
@@ -54,7 +54,7 @@ elif page == "Face Index":
         face_vector = face_encoding(image_to_index_path)
         result = face_index(face_vector, cif, phone)
         st.write(result)
-        os.remove(image_to_index_path)
+        # os.remove(image_to_index_path)
 
 
 elif page == "Face Search":

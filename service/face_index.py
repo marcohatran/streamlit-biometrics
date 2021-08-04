@@ -10,7 +10,7 @@ def face_encoding(image_path):
 def face_index(face_vector, cif, phone):
     host = "localhost"
     port = "9200"
-    index = "faces"
+    index = "faces_demo"
     es = Elasticsearch()
     data = json.dumps({
         "face_encoding": face_vector,

@@ -365,8 +365,8 @@ def get_matches(img1, img2, orientations2):
     pv1, po1 = convert_to_polar(fo1, b1)
     pv2, po2 = convert_to_polar(fo2, b2)
     ml = match_level(pv1, pv2, fv1, fv2)
-    print(ml, "Matched" if (ml > 0.3) else "Not Matched")
-    if ml > 0.3:
+    print(ml, "Matched" if (ml > 0.2) else "Not Matched")
+    if ml > 0.2:
         return {"Result": True, "Score": ml}
     else:
         return {"Result": False, "Score": ml}
